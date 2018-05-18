@@ -1,5 +1,5 @@
 # Felipe Nunez Challenge
-This is a repository that contains the wheather forecast challenge.
+This is a repository that contains the weather forecast challenge.
 
 ### Requirements
 * Build a native iOS app.
