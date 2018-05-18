@@ -49,7 +49,7 @@ class ViewController: UIViewController {
                 self.cityTemp.text = "\(Int(latestTemp))° F"
             }
         }).disposed(by: disposeBag)
-        viewModel.fetchData()
+        viewModel.getForecast()
     }
 }
 

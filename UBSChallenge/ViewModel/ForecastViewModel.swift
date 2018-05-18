@@ -16,24 +16,55 @@ class ForecastViewModel : NSObject {
     var isDataLoading:BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var disposeBag = DisposeBag()
     
+    private var latittude:Double = 0
+    private var longitude:Double = 0
+    
     /**
      Request the channels from the network
      */
-    func fetchData() {
+    private func fetchData() {
         isDataLoading.accept(true)
-        NetworkServiceManager.forecast(lat: 33.756, lon: -84.392).subscribe { [unowned self] (event) in
+        NetworkServiceManager.forecast(lat: latittude, lon: longitude).subscribe { [unowned self] (event) in
             switch event {
             case .next(let channels):
                 let items = self.getForecastDataSource(response: channels.list)
                 self.forecast.accept(items)
                 self.city.accept(channels.city)
             case .error(let error):
+                // Catch location failed error on the network call
                 debugPrint(error.localizedDescription)
                 break
             case .completed:
                 self.isDataLoading.accept(false)
             }
             }.disposed(by: disposeBag)
+    }
+    
+    func getForecast() {
+        isDataLoading.accept(true)
+        LocationManager.shared.updateLocation { [unowned self] (location, error) in
+            self.isDataLoading.accept(false)
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                switch error {
+                case LocationManagerError.locationFailed:
+                    // Catch location failed error
+                    break
+                case LocationManagerError.noPermission:
+                    // Catch location failed error due no permissions
+                    break
+                default:
+                    break
+                }
+            } else if let location = location {
+                self.latittude = location.coordinate.latitude
+                self.longitude = location.coordinate.longitude
+                self.fetchData()
+            } else {
+                debugPrint("Unexpected error happened")
+                // Catch unknown error
+            }
+        }
     }
     
     func getForecastDataSource(response:[ForecastItem]) -> [ForecastDataSource] {

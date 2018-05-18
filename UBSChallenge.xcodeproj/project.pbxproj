@@ -19,6 +19,7 @@
 		606BB74E20AF126C007F203E /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74D20AF126C007F203E /* ForecastResponse.swift */; };
 		606BB75020AF1891007F203E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74F20AF1891007F203E /* ForecastViewModel.swift */; };
 		606BB75320AF1AF4007F203E /* ForecastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB75220AF1AF4007F203E /* ForecastViewCell.swift */; };
+		606BB75520AF327E007F203E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB75420AF327E007F203E /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		606BB74D20AF126C007F203E /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		606BB74F20AF1891007F203E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		606BB75220AF1AF4007F203E /* ForecastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewCell.swift; sourceTree = "<group>"; };
+		606BB75420AF327E007F203E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7A9A1C259A54EDB469A8425D /* Pods-UBSChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBSChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UBSChallenge/Pods-UBSChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B8DB9E64E306D9FB714164 /* Pods_UBSChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UBSChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34DDA596B8106361B866398 /* Pods-UBSChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBSChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-UBSChallenge/Pods-UBSChallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		606BB74120AF077A007F203E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				606BB75620AF328E007F203E /* Location */,
 				606BB74220AF077F007F203E /* Networking */,
 			);
 			path = Services;
@@ -143,6 +146,14 @@
 				606BB75220AF1AF4007F203E /* ForecastViewCell.swift */,
 			);
 			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		606BB75620AF328E007F203E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				606BB75420AF327E007F203E /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		DD9A27B0F1E662A0E269E941 /* Frameworks */ = {
@@ -295,6 +306,7 @@
 				606BB74820AF0CD5007F203E /* ReachabilityManager.swift in Sources */,
 				606BB73020AF069C007F203E /* AppDelegate.swift in Sources */,
 				606BB74E20AF126C007F203E /* ForecastResponse.swift in Sources */,
+				606BB75520AF327E007F203E /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

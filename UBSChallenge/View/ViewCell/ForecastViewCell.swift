@@ -26,6 +26,7 @@ class ForecastViewCell: UITableViewCell {
     @IBOutlet weak var temp: UILabel!
     @IBOutlet weak var min: UILabel!
     @IBOutlet weak var max: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     
     func setup(forecastItem: ForecastItem) {
         let dateFormatter = DateFormatter()
@@ -34,5 +35,12 @@ class ForecastViewCell: UITableViewCell {
         temp.text = "\(Int(forecastItem.main.temp))° F"
         max.text = "\(Int(forecastItem.main.tempMax))° F"
         min.text = "\(Int(forecastItem.main.tempMin))° F"
+        setIconImage(iconCode: forecastItem.weather.first?.icon)
+    }
+    
+    func setIconImage(iconCode:String?) {
+        guard let iconCode = iconCode else { return }
+        guard let url = URL(string: "http://openweathermap.org/img/w/\(iconCode).png") else { return }
+        icon.sd_setImage(with: url, completed: nil)
     }
 }
