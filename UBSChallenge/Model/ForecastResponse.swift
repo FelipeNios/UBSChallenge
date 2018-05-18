@@ -8,40 +8,37 @@
 
 import Foundation
 
+struct ForecastDataSource {
+    let date: String
+    let list: [ForecastItem]
+}
+
 struct ForecastResponse: Codable {
     let cod: String
-    let message: Double
-    let cnt: Int
-    let list: [List]
+    let list: [ForecastItem]
     let city: City
 }
 
 struct City: Codable {
     let id: Int
     let name: String
-    let coord: Coord
     let country: String
+    
+    init() {
+        id = 0
+        name = ""
+        country = ""
+    }
 }
 
-struct Coord: Codable {
-    let lat, lon: Double
-}
-
-struct List: Codable {
-    let dt: Int
+struct ForecastItem: Codable {
+    let dt: Double
+    var datetime: Date {
+        return Date(timeIntervalSince1970: dt)
+    }
     let main: MainClass
     let weather: [Weather]
     let clouds: Clouds
-    let wind: Wind
-    let sys: Sys
-    let dtTxt: String
-    let rain, snow: Rain?
-    
-    enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, sys
-        case dtTxt = "dt_txt"
-        case rain, snow
-    }
 }
 
 struct Clouds: Codable {
@@ -66,44 +63,9 @@ struct MainClass: Codable {
     }
 }
 
-struct Rain: Codable {
-    let the3H: Double?
-    
-    enum CodingKeys: String, CodingKey {
-        case the3H = "3h"
-    }
-}
-
-struct Sys: Codable {
-    let pod: Pod
-}
-
-enum Pod: String, Codable {
-    case d = "d"
-    case n = "n"
-}
-
 struct Weather: Codable {
     let id: Int
-    let main: MainEnum
-    let description: Description
+    let main: String
+    let description: String
     let icon: String
-}
-
-enum Description: String, Codable {
-    case brokenClouds = "broken clouds"
-    case clearSky = "clear sky"
-    case fewClouds = "few clouds"
-    case lightRain = "light rain"
-    case moderateRain = "moderate rain"
-}
-
-enum MainEnum: String, Codable {
-    case clear = "Clear"
-    case clouds = "Clouds"
-    case rain = "Rain"
-}
-
-struct Wind: Codable {
-    let speed, deg: Double
 }

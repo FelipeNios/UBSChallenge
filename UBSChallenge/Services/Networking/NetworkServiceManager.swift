@@ -15,30 +15,35 @@ import Foundation
 enum NetworkingError : Swift.Error {
     case noData
     case noInternet
+    case noSuccessStatusCode
     case unkown
 }
 
 class NetworkServiceManager {
     /**
-     Gets the radio channel data from the network service
+     Gets the 5 day forecast data from the network service
      */
-    static func forecast(city:String, country:String) -> Observable<[List]> {
+    static func forecast(lat:Double, lon:Double) -> Observable<ForecastResponse> {
         guard ReachabilityManager.shared.isOnline else { return Observable.error(NetworkingError.noInternet) }
         
         return Observable.create { observable in
             let provider = MoyaProvider<ApiService>()
-            let request = provider.rx.request(.forecast(city:city, country:country))
+            let request = provider.rx.request(.forecast(lat:lat, lon:lon))
                 .filterSuccessfulStatusCodes()
                 .map(ForecastResponse.self)
             
             let disposable = request.subscribe { event in
                 switch event {
                 case .success(let result):
-                    observable.onNext(result.list)
-                    observable.onCompleted()
+                    if result.cod == "200" {
+                        observable.onNext(result)
+                    } else {
+                        observable.onError(NetworkingError.noSuccessStatusCode)
+                    }
                 case .error(let error):
                     observable.onError(error)
                 }
+                observable.onCompleted()
             }
             return Disposables.create {
                 disposable.dispose()

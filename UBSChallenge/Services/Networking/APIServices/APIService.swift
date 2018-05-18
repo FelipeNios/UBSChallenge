@@ -9,7 +9,7 @@
 import Moya
 
 enum ApiService {
-    case forecast(city:String, country:String)
+    case forecast(lat:Double, lon:Double)
 }
 
 /**
@@ -34,10 +34,12 @@ extension ApiService : TargetType {
     
     var task : Task {
         switch self {
-        case .forecast(let city, let country):
+        case .forecast(let lat, let lon):
             var parameters:[String:Any] = [:]
-            parameters["q"] = "\(city),\(country)"
+            parameters["lat"] = "\(lat)"
+            parameters["lon"] = "\(lon)"
             parameters["appid"] = apiKey
+            parameters["units"] = "imperial"
             return Task.requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }

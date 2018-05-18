@@ -17,6 +17,8 @@
 		606BB74A20AF0D26007F203E /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74920AF0D26007F203E /* NetworkServiceManager.swift */; };
 		606BB74C20AF0D55007F203E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74B20AF0D55007F203E /* APIService.swift */; };
 		606BB74E20AF126C007F203E /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74D20AF126C007F203E /* ForecastResponse.swift */; };
+		606BB75020AF1891007F203E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB74F20AF1891007F203E /* ForecastViewModel.swift */; };
+		606BB75320AF1AF4007F203E /* ForecastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BB75220AF1AF4007F203E /* ForecastViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		606BB74920AF0D26007F203E /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		606BB74B20AF0D55007F203E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		606BB74D20AF126C007F203E /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
+		606BB74F20AF1891007F203E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
+		606BB75220AF1AF4007F203E /* ForecastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewCell.swift; sourceTree = "<group>"; };
 		7A9A1C259A54EDB469A8425D /* Pods-UBSChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBSChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UBSChallenge/Pods-UBSChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B8DB9E64E306D9FB714164 /* Pods_UBSChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UBSChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34DDA596B8106361B866398 /* Pods-UBSChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBSChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-UBSChallenge/Pods-UBSChallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +78,6 @@
 				606BB74620AF07B1007F203E /* View */,
 				606BB74520AF07AB007F203E /* ViewModel */,
 				606BB72F20AF069C007F203E /* AppDelegate.swift */,
-				606BB73120AF069C007F203E /* ViewController.swift */,
 				606BB73620AF069C007F203E /* Assets.xcassets */,
 				606BB73820AF069C007F203E /* LaunchScreen.storyboard */,
 				606BB73B20AF069D007F203E /* Info.plist */,
@@ -119,6 +122,7 @@
 		606BB74520AF07AB007F203E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				606BB74F20AF1891007F203E /* ForecastViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -126,9 +130,19 @@
 		606BB74620AF07B1007F203E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				606BB75120AF1AD0007F203E /* ViewCell */,
 				606BB73320AF069C007F203E /* Main.storyboard */,
+				606BB73120AF069C007F203E /* ViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		606BB75120AF1AD0007F203E /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				606BB75220AF1AF4007F203E /* ForecastViewCell.swift */,
+			);
+			path = ViewCell;
 			sourceTree = "<group>";
 		};
 		DD9A27B0F1E662A0E269E941 /* Frameworks */ = {
@@ -276,6 +290,8 @@
 				606BB74A20AF0D26007F203E /* NetworkServiceManager.swift in Sources */,
 				606BB74C20AF0D55007F203E /* APIService.swift in Sources */,
 				606BB73220AF069C007F203E /* ViewController.swift in Sources */,
+				606BB75320AF1AF4007F203E /* ForecastViewCell.swift in Sources */,
+				606BB75020AF1891007F203E /* ForecastViewModel.swift in Sources */,
 				606BB74820AF0CD5007F203E /* ReachabilityManager.swift in Sources */,
 				606BB73020AF069C007F203E /* AppDelegate.swift in Sources */,
 				606BB74E20AF126C007F203E /* ForecastResponse.swift in Sources */,
